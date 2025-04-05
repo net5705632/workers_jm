@@ -53,8 +53,7 @@ jobs:
 
         with open('hy2.txt', 'wb') as f:
             for data in decoded_data:
-                f.write(data)
-                f.write(b'\n')
+                f.write(data)  # 关键修改：移除了换行符写入
 
         print('::notice::内容已写入 hy2.txt')
 
