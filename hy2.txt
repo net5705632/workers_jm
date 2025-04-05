@@ -1,0 +1,7 @@
+hy2://dongtaiwang.com@46.17.41.217:4395?insecure=1&sni=www.bing.com#%E4%BF%84%E7%BD%97%E6%96%AF%E8%81%94%E9%82%A6%20Moscow%20AS51659%20LLC%20Baxet
+hy2://dongtaiwang.com@46.29.163.171:35751?insecure=1&sni=www.bing.com#%E4%BF%84%E7%BD%97%E6%96%AF%E8%81%94%E9%82%A6%20Moscow%20AS51659%20LLC%20Baxet
+hysteria://46.17.41.174:10469?upmbps=11&downmbps=55&auth=dongtaiwang.com&insecure=1&peer=apple.com&alpn=h3#%E4%BF%84%E7%BD%97%E6%96%AF%E8%81%94%E9%82%A6%20Moscow%20AS51659%20LLC%20Baxet
+hysteria://185.22.155.71:10803?upmbps=11&downmbps=55&auth=dongtaiwang.com&insecure=1&peer=apple.com&alpn=h3#%E4%BF%84%E7%BD%97%E6%96%AF%20Moscow%20AS51659%20LLC%20Baxet
+hysteria://176.32.35.226:62003?upmbps=11&downmbps=55&auth=dongtaiwang.com&insecure=1&peer=apple.com&alpn=h3#%E4%BF%84%E7%BD%97%E6%96%AF%E8%81%94%E9%82%A6%20Moscow%20AS51659%20LLC%20Baxet
+hysteria://195.154.200.178:46938?upmbps=11&downmbps=55&auth=dongtaiwang.com&insecure=1&peer=apple.com&alpn=h3#%E6%B3%95%E5%9B%BD%20%E6%B3%95%E5%85%B0%E8%A5%BF%E5%B2%9B%20AS12876%20SCALEWAY%20S.A.S.
+hysteria://195.154.200.178:44557?upmbps=11&downmbps=55&auth=dongtaiwang.com&insecure=1&peer=apple.com&alpn=h3#%E6%B3%95%E5%9B%BD%20%E6%B3%95%E5%85%B0%E8%A5%BF%E5%B2%9B%20AS12876%20SCALEWAY%20S.A.S.
