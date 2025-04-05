@@ -2,8 +2,8 @@ name: Base64 Decoder & Auto Commit
 
 on:
   schedule:
-    - cron: '0 * * * *'  # 关键修改点：每小时运行一次
-  workflow_dispatch:      # 支持手动触发
+    - cron: '0 * * * *'
+  workflow_dispatch:
 
 jobs:
   decode-and-commit:
@@ -14,7 +14,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
-        persist-credentials: true  # 关键权限配置
+        persist-credentials: true
 
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -29,53 +29,59 @@ jobs:
         python -c "import requests
         import base64
 
-        url = 'https://lucky-term-fea6.tel13339999091.workers.dev/'
+        urls = [
+            'https://lucky-term-fea6.tel13339999091.workers.dev/',
+            'https://gob64.topmarco.tech/'
+        ]
+
+        decoded_data = []
+
+        for url in urls:
+            try:
+                response = requests.get(url)
+                response.raise_for_status()
+                encoded_content = response.text.strip()
+                decoded_bytes = base64.b64decode(encoded_content)
+                decoded_data.append(decoded_bytes)
+                print(f'成功从 {url} 获取并解码数据')
+            except Exception as e:
+                print(f'::warning::处理 {url} 时出错：{str(e)}')
+
+        if not decoded_data:
+            print('::error::所有URL处理失败')
+            exit(1)
+
+        with open('hy2.txt', 'wb') as f:
+            for data in decoded_data:
+                f.write(data)
+                f.write(b'\n')
+
+        print('::notice::内容已写入 hy2.txt')
 
         try:
-            response = requests.get(url)
-            response.raise_for_status()
-            encoded_content = response.text.strip()
-            
-            decoded_bytes = base64.b64decode(encoded_content)
-            
-            # 二进制写入确保数据完整性
-            with open('hy2.txt', 'wb') as f:
-                f.write(decoded_bytes)
-            
-            print('::notice::内容已写入 hy2.txt')
-            
-            try:
-                # 日志验证用
-                decoded_content = decoded_bytes.decode('utf-8')
-                print('解码预览：\\n', decoded_content[:200] + '...')
-            except UnicodeDecodeError:
-                print('::warning::内容包含非UTF-8数据，已保存原始字节')
-            
-        except Exception as e:
-            print(f'::error::处理失败：{str(e)}')
-            exit(1)
+            decoded_content = decoded_data[0].decode('utf-8')
+            print('解码预览（第一个数据块）：\\n', decoded_content[:200] + '...')
+        except UnicodeDecodeError:
+            print('::warning::第一个数据块包含非UTF-8数据，已保存原始字节')
+        except IndexError:
+            pass
         "
 
     - name: Commit and Push
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 自动生成的令牌
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        # 配置 Git 身份
         git config --global user.name "GitHub Actions"
         git config --global user.email "actions@github.com"
         
-        # 添加并提交文件
         git add hy2.txt
         
-        # 检测文件变更
         if git diff-index --quiet HEAD --; then
           echo "没有文件变更需要提交"
         else
           git commit -m "自动更新 hy2.txt [skip ci]"
-          
-          # 强制推送更新（使用 token 认证）
           git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/${{ github.repository }}
-          git push origin HEAD:main  # 根据实际分支修改
+          git push origin HEAD:main
           
           echo "::notice::文件已成功推送"
         fi
