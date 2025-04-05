@@ -12,6 +12,9 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+      with:
+        # 需要设置 fetch-depth: 0 才能正常推送
+        fetch-depth: 0
 
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -35,13 +38,18 @@ jobs:
             
             decoded_bytes = base64.b64decode(encoded_content)
             
+            # 将原始字节写入文件
+            with open('hy2.txt', 'wb') as f:
+                f.write(decoded_bytes)
+            
+            print('::notice::内容已保存到 hy2.txt')
+            
             try:
+                # 仅用于日志输出验证
                 decoded_content = decoded_bytes.decode('utf-8')
-                print('::notice::解码成功！')
-                print(decoded_content)
+                print('解码后的内容：\\n', decoded_content)
             except UnicodeDecodeError:
-                print('::warning::解码内容非UTF-8格式')
-                print(decoded_bytes.hex())
+                print('::warning::内容非UTF-8格式，已保存原始字节')
             
         except requests.exceptions.RequestException as e:
             print(f'::error::请求出错：{e}')
@@ -50,3 +58,16 @@ jobs:
             print(f'::error::Base64解码失败：{e}')
             exit(1)
         "
+
+    - name: Commit file
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add hy2.txt
+        # 仅当文件有变更时提交
+        if git diff-index --quiet HEAD --; then
+          echo "没有检测到文件变更"
+        else
+          git commit -m "自动更新 hy2 文件 [skip ci]"
+          git push
+        fi
