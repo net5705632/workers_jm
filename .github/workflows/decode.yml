@@ -1,0 +1,52 @@
+name: Base64 Decoder
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 每天 UTC 时间 0 点自动运行
+  workflow_dispatch:      # 添加手动触发选项
+
+jobs:
+  decode:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: pip install requests
+
+    - name: Run decoding script
+      run: |
+        python -c "import requests
+        import base64
+
+        url = 'https://lucky-term-fea6.tel13339999091.workers.dev/'
+
+        try:
+            response = requests.get(url)
+            response.raise_for_status()
+            encoded_content = response.text.strip()
+            
+            decoded_bytes = base64.b64decode(encoded_content)
+            
+            try:
+                decoded_content = decoded_bytes.decode('utf-8')
+                print('::notice::解码成功！')
+                print(decoded_content)
+            except UnicodeDecodeError:
+                print('::warning::解码内容非UTF-8格式')
+                print(decoded_bytes.hex())
+            
+        except requests.exceptions.RequestException as e:
+            print(f'::error::请求出错：{e}')
+            exit(1)
+        except base64.binascii.Error as e:
+            print(f'::error::Base64解码失败：{e}')
+            exit(1)
+        "
