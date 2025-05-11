@@ -5,8 +5,8 @@ hysteria://195.154.200.178:46938?upmbps=11&downmbps=55&auth=dongtaiwang.com&inse
 hysteria://195.154.200.178:44557?upmbps=11&downmbps=55&auth=dongtaiwang.com&insecure=1&peer=apple.com&alpn=h3#%E6%B3%95%E5%9B%BD%20%E6%B3%95%E5%85%B0%E8%A5%BF%E5%B2%9B%20AS12876%20SCALEWAY%20S.A.S.hysteria://185.22.155.71:10803?upmbps=100&downmbps=100&auth=dongtaiwang.com&obfsParam=&insecure=1&peer=apple.com&alpn=h3&recv_window=230686720&recv_window_conn=57671680&mport=
 hysteria://195.154.200.40:2345?upmbps=100&downmbps=100&auth=dongtaiwang.com&obfsParam=&insecure=1&peer=bing.com&alpn=h3&recv_window=276824064&recv_window_conn=69206016&mport=
 hysteria://51.159.226.1:14241?upmbps=100&downmbps=100&auth=dongtaiwang.com&obfsParam=&insecure=1&peer=apple.com&alpn=h3&recv_window=230686720&recv_window_conn=57671680&mport=
-hysteria://195.154.200.40:15010?upmbps=100&downmbps=100&auth=dongtaiwang.com&obfsParam=&insecure=1&peer=apple.com&alpn=h3&recv_window=276824064&recv_window_conn=69206016&mport=
 hysteria://208.87.243.187:40528?upmbps=100&downmbps=100&auth=dongtaiwang.com&obfsParam=&insecure=1&peer=apple.com&alpn=h3&recv_window=23068672&recv_window_conn=5767168&mport=
+hysteria://195.154.200.40:15010?upmbps=100&downmbps=100&auth=dongtaiwang.com&obfsParam=&insecure=1&peer=apple.com&alpn=h3&recv_window=276824064&recv_window_conn=69206016&mport=
 hysteria2://dongtaiwang.com@hy2.694463.xyz:10011?insecure=1&sni=www.bing.com&mport=
 hysteria2://dongtaiwang.com@hy2-1.694463.xyz:4489?insecure=1&sni=www.bing.com&mport=
 hysteria2://dongtaiwang.com@108.181.5.130:57773?insecure=1&sni=apple.com&mport=
