@@ -13,8 +13,8 @@ hysteria://51.159.226.1:14241?upmbps=100&downmbps=100&auth=dongtaiwang.com&obfsP
 hysteria2://dongtaiwang.com@46.17.41.217:30033?insecure=1&sni=www.bing.com&mport=
 hysteria2://dongtaiwang.com@45.129.2.108:30033?insecure=1&sni=www.bing.com&mport=
 hysteria2://dongtaiwang.com@46.29.163.171:30033?insecure=1&sni=www.bing.com&mport=
-hysteria2://dongtaiwang.com@hy2-2.694463.xyz:4489?insecure=1&sni=www.bing.com&mport=
 hysteria2://dongtaiwang.com@51.159.111.32:31180?insecure=1&sni=apple.com&mport=
+hysteria2://dongtaiwang.com@hy2-2.694463.xyz:4489?insecure=1&sni=www.bing.com&mport=
 hysteria2://dongtaiwang.com@46.17.41.5:12904?insecure=1&sni=apple.com&mport=
 hysteria2://dongtaiwang.com@108.181.5.130:57773?insecure=1&sni=apple.com&mport=
 
